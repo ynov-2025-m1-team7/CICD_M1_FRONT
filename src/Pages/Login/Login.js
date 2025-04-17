@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate, Link } from 'react-router-dom';
 import styled from 'styled-components';
-import LivreImage from '../asset/Livre.webp';
+//import LivreImage from '../asset/Livre.webp';
 import Inscription from './Inscription';
 
 
@@ -20,9 +20,9 @@ const Login = () => {
         setLoading(true);
 
         try {
-            const response = await axios.post('http://localhost:3001/Login', inputs);
+            //const response = await axios.post('http://localhost:3001/Login', inputs);
             localStorage.setItem('token', response.headers['authorization']);
-            navigate('/Bibliothèque');
+            //navigate('/Bibliothèque');
         } catch (error) {
             console.error(error);
             setError('Identifiants incorrects. Veuillez réessayer.');
@@ -33,8 +33,7 @@ const Login = () => {
 
     return (
         <LoginForm onSubmit={handleSubmit}>
-            <Image src={LivreImage} alt="Livre" />
-
+            {/* <Image src={LivreImage} alt="Livre" /> */}
             <InputField
                 type="email"
                 placeholder="Email"
