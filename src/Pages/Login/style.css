@@ -8,9 +8,9 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-image: url('https://fr.pinterest.com/pin/739082988875504669/');
+    background-image: url('/login_background.png'); /* Supprime les parenthèses */
     background-size: cover;
-    background-position: center;
+    background-position: left;
 }
 
 /* Conteneur du formulaire */
