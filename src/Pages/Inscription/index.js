@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import Input from '../../Compossant/Input';
+import InscriptionForm from '../../Compossant/InscriptionForm';
 //import { useNavigate, Link } from 'react-router-dom';
 
 const Inscription = () => {
@@ -62,34 +64,7 @@ const Inscription = () => {
 
 
     return (
-        <form onSubmit={handleSubmit}>
-            <input
-                type="text"
-                name="users"
-                placeholder="Nom d'utilisateur"
-                value={formData.users}
-                onChange={handleInputChange}
-            />
-            <input
-                type="email"
-                name="email"
-                placeholder="Email"
-                value={formData.email}
-                onChange={handleInputChange}
-            />
-            <input
-                type="password"
-                name="password"
-                placeholder="Mot de passe"
-                value={formData.password}
-                onChange={handleInputChange}
-            />
-            <button type="submit" disabled={isSubmitting}>
-                {isSubmitting ? 'En cours...' : 'S\'inscrire'}
-            </button>
-            {error && <p>{error}</p>}
-            <p>Déjà un compte? Connectez-vous</p>
-        </form>
+        <InscriptionForm/>
     );
 };
 

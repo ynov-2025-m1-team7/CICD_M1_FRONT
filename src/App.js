@@ -1,16 +1,12 @@
 import logo from './logo.svg';
 import './App.css';
-import Login from "./Pages/Login/Login";
-import Inscription from "./Pages/Inscription/Inscription";
+import Login from "./Pages/Login/index";
+import Inscription from "./Pages/Inscription/index";
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-
-      </header>
-
         <Login/>
-        <Inscription/>
+        {/* <Inscription/> */}
     </div>
   );
 }
