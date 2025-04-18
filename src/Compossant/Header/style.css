@@ -6,6 +6,18 @@ header {
 }
 
 .WebsiteName {
-    font-size: 24px;
+    font-size: 32px;
     font-weight: bold;
+}
+
+@media screen and (max-width:680px){
+    header {
+        padding: 1px 16px;
+        text-align: center;
+    }
+
+    .WebsiteName {
+        font-size: 24px;
+        
+    }
 }
