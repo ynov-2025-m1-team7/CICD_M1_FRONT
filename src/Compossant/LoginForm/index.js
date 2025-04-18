@@ -3,6 +3,7 @@ import Input from "../Input";
 const LoginForm = () => {
     return (
         <form>
+           <h1>Login</h1>
             <Input
                 type="email"
                 placeholder="Email"
