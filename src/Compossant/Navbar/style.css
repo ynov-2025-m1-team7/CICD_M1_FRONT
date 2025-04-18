@@ -1,0 +1,12 @@
+.navbar {
+    grid-column: 1 / 3;
+    background-color: #E5E7EB;
+    padding: 0 32px;
+}
+
+.navbar__links {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 32px 0;
+}

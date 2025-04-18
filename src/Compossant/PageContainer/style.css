@@ -1,0 +1,16 @@
+.page-container {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    gap: 16px;
+    width: 100%;
+    min-height: 100vh;
+  }
+  
+  .page-content {
+    height: 100%;
+    overflow: auto;
+    padding: 20px;
+    border-radius: 8px;
+    grid-column: 3 / 11;
+  }
+  

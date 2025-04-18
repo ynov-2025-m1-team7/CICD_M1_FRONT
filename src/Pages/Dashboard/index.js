@@ -1,10 +1,11 @@
 import Header from "../../Compossant/Header";
+import PageContainer from "../../Compossant/PageContainer";
 
 const DashboardPage = () => {
     return (
         <div className="Dashboard">
             <Header />
-            <h1>Dashboard</h1>
+            <PageContainer />
         </div>
     );
 }
