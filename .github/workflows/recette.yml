@@ -4,12 +4,9 @@ on:
   push:
     branches:
       - recette
-    paths-ignore:
-      - '**'
 
 jobs:
   build:
-    if: github.event.before == 'refs/heads/dev'
     runs-on: ubuntu-latest
 
     steps:
