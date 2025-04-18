@@ -1,0 +1,75 @@
+/* Style général */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-image: url('https://fr.pinterest.com/pin/739082988875504669/'); /* Ajoute une image de fond */
+    background-size: cover;
+    background-position: center;
+}
+
+/* Conteneur du formulaire */
+.form-wrapper {
+    background-color: rgba(255, 255, 255, 0.9); /* Fond semi-transparent */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    width: 350px;
+    text-align: center;
+}
+
+/* Titre du formulaire */
+.form-wrapper h2 {
+    font-family: 'Georgia', serif;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* Champs de texte */
+input[type="email"],
+input[type="password"] {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+/* Bouton de soumission */
+button[type="submit"] {
+    width: 100%;
+    padding: 12px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+}
+
+button[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+/* Style du lien d'inscription */
+p {
+    margin-top: 15px;
+    font-size: 14px;
+}
+
+p a {
+    color: #007BFF;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+p a:hover {
+    text-decoration: underline;
+}
