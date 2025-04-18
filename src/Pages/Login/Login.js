@@ -1,10 +1,22 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { useNavigate, Link } from 'react-router-dom';
-import styled from 'styled-components';
-//import LivreImage from '../asset/Livre.webp';
-import Inscription from './Inscription';
+//import { useNavigate, Link } from 'react-router-dom';
+import Inscription from '../Inscription/Inscription';
 
+
+class LoginForm extends React.Component {
+    render() {
+        return null;
+    }
+}
+
+function InputField(props) {
+    return null;
+}
+
+function SubmitButton(props) {
+    return null;
+}
 
 const Login = () => {
     const [inputs, setInputs] = useState({
@@ -13,16 +25,16 @@ const Login = () => {
     });
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
-    const navigate = useNavigate();
+    //const navigate = useNavigate();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         setLoading(true);
 
         try {
-            //const response = await axios.post('http://localhost:3001/Login', inputs);
+            const response = await axios.post('http://localhost:3001/Login', inputs);
             localStorage.setItem('token', response.headers['authorization']);
-            //navigate('/Bibliothèque');
+            //navigate('/dashboard');
         } catch (error) {
             console.error(error);
             setError('Identifiants incorrects. Veuillez réessayer.');
@@ -32,29 +44,28 @@ const Login = () => {
     };
 
     return (
-        <LoginForm onSubmit={handleSubmit}>
-            {/* <Image src={LivreImage} alt="Livre" /> */}
-            <InputField
+        <form onSubmit={handleSubmit}>
+            <input
                 type="email"
                 placeholder="Email"
                 value={inputs.email}
                 onChange={(e) => setInputs({...inputs, email: e.target.value})}
             />
-            <InputField
+            <input
                 type="password"
                 placeholder="Password"
                 value={inputs.password}
                 onChange={(e) => setInputs({...inputs, password: e.target.value})}
             />
-            <SubmitButton type="submit" disabled={loading}>
+            <button type="submit" disabled={loading}>
                 {loading ? 'Chargement...' : 'Login'}
-            </SubmitButton>
+            </button>
 
-            {error && <ErrorMessage>{error}</ErrorMessage>}
-            {loading && <LoadingMessage>Connexion en cours...</LoadingMessage>}
+            {/*error && <ErrorMessage>{error}</ErrorMessage>*/}
+            {/*loading && <LoadingMessage>Connexion en cours...</LoadingMessage>*/}
 
-            <InscriptionLink to="/Inscription">s'inscrire</InscriptionLink>
-        </LoginForm>
+            <p>s'inscrire</p>
+        </form>
     );
 }
 
