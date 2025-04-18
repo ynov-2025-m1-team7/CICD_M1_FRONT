@@ -27,10 +27,10 @@ jobs:
         docker build -t djlopezz/cicdm1-front .
         docker push djlopezz/cicdm1-front
     
-  # Hook:
-  #   runs-on: ubuntu-latest
-  #   needs: build
-  #   steps:
-  #   - name: refresh webservice
-  #     run: |
-  #       curl -X POST "${{ secrets.RENDER_HOOK_URL }}"
+  Hook:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+    - name: refresh webservice
+      run: |
+        curl -X POST "${{ secrets.RENDER_HOOK_URL }}"
