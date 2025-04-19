@@ -8,7 +8,7 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-image: url('https://fr.pinterest.com/pin/739082988875504669/');
+    background-image: url('http://localhost:3000/login_background.png');
     background-size: cover;
     background-position: center;
 }
