@@ -1,32 +1,25 @@
-import "./style.css";
+import React from 'react';
 
-const Feedback_Card = () => {
+const FeedbackList = ({ feedbacks }) => {
     return (
-            <div className="cards">
-                <article className="card">
-                    <div className="flex-container">
-                        <div className="flex-items">
-                            <img src="/assets/Feedback/HappySmiley.svg" alt="" className={ "smiley"}/>
+        <ul style={{ listStyleType: 'none', padding: 0 }}>
+            {feedbacks.map((feedback) => (
+                <li key={feedback.id} style={{ border: '1px solid #e0e0e0', padding: '10px', margin: '10px 0', borderRadius: '5px', backgroundColor: '#f9f9f9' }}>
+                    <div style={{ display: 'flex', alignItems: 'center' }}>
+                        <div style={{ marginRight: '10px' }}>
+                            {/* Ajout d'un smiley (emoji) */}
+                            <span role="img" aria-label="smiley">😊</span>
                         </div>
-                        <div className="flex-items">
-                            <div className="info">
-                                <p className={"info-name"}> Franck </p>
-                                <p className={"info-date"}> Just Now </p>
-                                <p> Type </p>
-                            </div>
-
-                            <div className="content">
-                                <p>
-                                    The idea of reaching the North Pole by means of balloons appears to have
-                                    been entertained many years ago.
-                                </p>
-                            </div>
+                        <div>
+                            <strong>{feedback.username}</strong> {/* Affichage du nom d'utilisateur */}
+                            <p style={{ margin: '5px 0', color: '#999' }}>{feedback.timestamp}</p> {/* Affichage du timestamp */}
+                            <p>{feedback.comment}</p> {/* Commentaire */}
                         </div>
                     </div>
-
-                </article>
-            </div>
+                </li>
+            ))}
+        </ul>
     );
-}
+};
 
-export default Feedback_Card;
+export default FeedbackList;
