@@ -1,12 +1,12 @@
 import Navbar from "../Navbar";
 import "./style.css";
 
-const PageContainer = () => {
+const PageContainer = ({component}) => {
     return (
         <div className="page-container">
             <Navbar />
             <div className="page-content">
-                <p>TEST</p>
+                {component}
             </div>
         </div>
     );

@@ -13,7 +13,8 @@ const NavButton = ({ text, redirection = "", onClick }) => {
             className={`nav-button-${selected ? "selected" : "unselected"}`}
             onClick={onClick}
         >
-            {text}
+            <p className="display__text">{text}</p>
+            <img className="display__icon" src="/assets/home.svg" alt="home" />
         </button>
     );
 }

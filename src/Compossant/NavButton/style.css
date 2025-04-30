@@ -25,3 +25,22 @@
   color: black;
   transition: background-color 0.3s ease;
 }
+
+
+@media screen and (min-width: 680px) {
+    .display__icon {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 680px) {
+  .nav-button-selected, .nav-button-unselected {
+    background-color: transparent;
+    text-align: center;
+    width: 65px;
+  }
+
+  .display__text {
+    display: none;
+  }
+}
