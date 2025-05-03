@@ -8,7 +8,9 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-image: url('http://localhost:3000/login_background.png');
+
+        background: url('login_background.png') left / cover no-repeat;
+    
     background-size: cover;
     background-position: left;
 }

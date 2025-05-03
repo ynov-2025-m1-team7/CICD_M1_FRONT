@@ -1,19 +1,18 @@
 import React from 'react';
-import "./style.css";
 
-const Input = ({ name, type, label, placeholder, value, onChange }) => {
-    return (
-        <div className="input-container">
-            {label && <label htmlFor={name} className="label">{label}</label>}
-            <input
-                className="input"
-                name={name}
-                type={type}
-                placeholder={placeholder}
-                value={value}
-                onChange={onChange}
-            />
-        </div>
+function Input(props) {
+    return React.createElement(
+        'div',
+        { className: 'input-container' },
+        props.label ? React.createElement('label', { htmlFor: props.name, className: 'label' }, props.label) : null,
+        React.createElement('input', {
+            className: 'input',
+            name: props.name,
+            type: props.type || 'text',
+            placeholder: props.placeholder || '',
+            value: props.value,
+            onChange: props.onChange
+        })
     );
 }
 
