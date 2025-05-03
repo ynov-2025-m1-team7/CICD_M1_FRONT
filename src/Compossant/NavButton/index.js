@@ -1,7 +1,7 @@
 import "./style.css";
 import { useLocation } from "react-router-dom";
 
-const NavButton = ({ text, redirection = "", onClick }) => {
+const NavButton = ({ text, image, imageSelected, id, redirection = "", onClick }) => {
     const path = useLocation().pathname;
     let selected = false;
 
@@ -10,11 +10,11 @@ const NavButton = ({ text, redirection = "", onClick }) => {
     }
     return (
         <button
-            className={`nav-button-${selected ? "selected" : "unselected"}`}
+            className={`nav-button-${id}-${selected ? "selected" : "unselected"}`}
             onClick={onClick}
         >
             <p className="display__text">{text}</p>
-            <img className="display__icon" src="/assets/home.svg" alt="home" />
+            <img className="display__icon" src={selected ? imageSelected : image} alt={text} />
         </button>
     );
 }

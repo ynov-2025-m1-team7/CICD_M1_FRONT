@@ -1,4 +1,4 @@
-.nav-button-selected, .nav-button-unselected {
+.nav-button-1-selected, .nav-button-1-unselected, .nav-button-2-selected, .nav-button-2-unselected, .nav-button-3-selected, .nav-button-3-unselected {
     border: none;
     width: 100%;
     padding: 10px 20px;
@@ -7,20 +7,20 @@
     border-radius: 10px;
 }
 
-.nav-button-selected {
+.nav-button-1-selected, .nav-button-2-selected, .nav-button-3-selected {
   background-color: #1F2937;
   color: white;
   font-weight: bold;
 }
 
-.nav-button-unselected {
+.nav-button-1-unselected, .nav-button-2-unselected, .nav-button-3-unselected {
   background-color: transparent;
   color: black;
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
 
-.nav-button-unselected:hover {
+.nav-button-1-unselected:hover, .nav-button-2-unselected:hover, .nav-button-3-unselected:hover {
   background-color: #CBD5E1;
   color: black;
   transition: background-color 0.3s ease;
@@ -34,11 +34,27 @@
 }
 
 @media screen and (max-width: 680px) {
-  .nav-button-selected, .nav-button-unselected {
+  .nav-button-1-selected, .nav-button-1-unselected, .nav-button-2-selected, .nav-button-2-unselected, .nav-button-3-selected, .nav-button-3-unselected {
     background-color: transparent;
     text-align: center;
     width: 65px;
   }
+
+  .nav-button-1-selected, .nav-button-1-unselected {
+    grid-column: 2;
+    grid-row: 1;
+  }
+  
+  .nav-button-2-selected, .nav-button-2-unselected {
+    grid-column: 1;
+    grid-row: 1;
+  }
+  
+  .nav-button-3-selected, .nav-button-3-unselected {
+    grid-column: 3;
+    grid-row: 1;
+  }
+
 
   .display__text {
     display: none;
