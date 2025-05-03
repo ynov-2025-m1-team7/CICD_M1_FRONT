@@ -1,0 +1,13 @@
+.DashboardContainer {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    grid-template-rows: repeat(6, 1fr);
+    margin: 0 32px 0 16px;
+    gap: 16px;
+}
+
+.DashboardTitle {
+    grid-column: 1 / -1;
+    text-align: center;
+    align-items: center;
+}

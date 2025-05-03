@@ -1,0 +1,15 @@
+.Line-Chart-Container{
+    grid-column: 5 / -1;
+    grid-row: 3 / -2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 32px 10%;
+    background-color: #E5E7EB;
+    border: #CBD5E1 solid 5px;
+    border-radius: 10px;
+}
+
+.Line-Chart-Container h2{
+    margin-block-start: 0;
+}
