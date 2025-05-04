@@ -1,23 +1,26 @@
-header {
-    background-color: #1F2937;
-    color: white;
-    padding: 4px 32px;
-    text-align: left;
-}
-
-.WebsiteName {
-    font-size: 32px;
-    font-weight: bold;
-}
-
-@media screen and (max-width:680px){
-    header {
-        padding: 1px 16px;
-        text-align: center;
-    }
-
-    .WebsiteName {
-        font-size: 24px;
-        
-    }
-}
+.header {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+  }
+  
+  .search-container {
+    display: flex;
+    align-items: center;
+  }
+  
+  .input {
+    padding: 10px;
+    margin-right: 10px;
+  }
+  
+  .select {
+    padding: 10px;
+  }
+  
+  .item {
+    padding: 10px;
+    border: 1px solid #ccc;
+    margin: 5px 0;
+  }
+  
