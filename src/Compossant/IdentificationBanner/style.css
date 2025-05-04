@@ -1,0 +1,24 @@
+.identification-banner {
+    width: 50vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.identification-banner__title {
+    width: 50%;
+    font-size: 80px;
+    font-weight: lighter;
+    color: #000000;
+    padding: 50px 100px;
+    background-color: #FFFFFF35;
+    border-radius: 20px;
+    text-align: center;
+}
+
+@media screen and (max-width: 680px) {
+    .identification-banner {
+        display: none;
+    }
+}
