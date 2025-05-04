@@ -1,9 +1,10 @@
 .Pie-Chart-Container{
     grid-column: 1 / 5;
-    grid-row: 2 / -2;
+    grid-row: 2 / -1;
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: space-between;
     padding: 32px 10%;
     background-color: #E5E7EB;
     border: #CBD5E1 solid 5px;
@@ -12,4 +13,17 @@
 
 .Pie-Chart-Container h2{
     margin-block-start: 0;
+}
+
+.Pie-Chart-Container canvas {
+    max-width: 90%;
+    max-height: 90%;
+    object-fit: contain;
+  }
+
+@media screen and (max-width: 680px) {
+    .Pie-Chart-Container {
+        grid-column: 1 / -1;
+        grid-row: 6 / -1;
+    }
 }

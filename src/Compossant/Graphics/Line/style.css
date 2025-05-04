@@ -1,15 +1,29 @@
-.Line-Chart-Container{
+.Line-Chart-Container {
     grid-column: 5 / -1;
-    grid-row: 3 / -2;
+    grid-row: 3 / -1;
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: space-around;
     padding: 32px 10%;
     background-color: #E5E7EB;
     border: #CBD5E1 solid 5px;
     border-radius: 10px;
 }
 
+.Line-Chart-Container canvas {
+    max-width: 100%;
+    max-height: 100%;
+    /* object-fit: contain; */
+}
+
 .Line-Chart-Container h2{
     margin-block-start: 0;
+}
+
+@media screen and (max-width: 680px) {
+    .Line-Chart-Container {
+        grid-column: 1 / -1;
+        grid-row: 3 / 6;
+    }
 }

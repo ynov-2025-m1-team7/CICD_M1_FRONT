@@ -20,3 +20,19 @@
     margin-block-start: 0;
     margin-block-end: 0;
 }
+
+@media screen and (max-width: 680px) {
+    .AvarageFeelingContainer {
+        grid-column: 1 / 4;
+        grid-row: 2;
+    }
+
+    .FeelingIcon {
+        width: 24px;
+        height: 24px;
+    }
+
+    .FeelingText {
+        font-size: 12px;
+    }
+}

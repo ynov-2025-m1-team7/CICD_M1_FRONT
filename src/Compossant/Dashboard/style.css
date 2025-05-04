@@ -1,7 +1,7 @@
 .DashboardContainer {
     display: grid;
     grid-template-columns: repeat(8, 1fr);
-    grid-template-rows: repeat(6, 1fr);
+    grid-template-rows: repeat(6, 120px);
     margin: 0 32px 0 16px;
     gap: 16px;
 }
@@ -10,4 +10,20 @@
     grid-column: 1 / -1;
     text-align: center;
     align-items: center;
+}
+
+@media screen and (max-width: 680px) {
+    .DashboardContainer {
+        grid-template-columns: repeat(6, 1fr);
+        grid-template-rows: repeat(10, 64px);
+        margin: 16px 16px 64px 16px;
+    }
+
+    .DashboardTitle {
+        grid-column: 1 / -1;
+        grid-row: 1;
+        text-align: center;
+        align-items: center;
+        font-size: 20px;
+    }
 }

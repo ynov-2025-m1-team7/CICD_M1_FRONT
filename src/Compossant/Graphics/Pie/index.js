@@ -33,7 +33,7 @@ const MyPieChart = () => {
     responsive: true, // Pour rendre le graphique responsive
     plugins: {
       legend: {
-        position: 'top', // Position de la légende
+        display: false
       },
       tooltip: {
         callbacks: {
