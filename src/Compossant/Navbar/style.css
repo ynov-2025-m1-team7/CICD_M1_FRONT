@@ -1,0 +1,32 @@
+.navbar {
+    grid-column: 1 / 3;
+    background-color: #E5E7EB;
+    padding: 0 32px;
+}
+
+.navbar__links {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 32px 0;
+}
+
+@media screen and (max-width: 680px) {
+    .navbar {
+        width: 100vw;
+        position : fixed;
+        padding: 0;
+        background-color: #1F2937;
+        bottom: 0;
+    }
+
+    .navbar__links {
+        display: grid;
+        grid-template-columns: repeat(3, auto);
+        column-gap: 3rem;
+        justify-content: center;
+        text-align : center;
+        padding: 0;
+        width: 100%;
+    }
+}
