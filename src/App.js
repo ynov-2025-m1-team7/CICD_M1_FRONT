@@ -1,12 +1,11 @@
-import logo from './logo.svg';
+import React from 'react';
+import Routes from './config/routes';
 import './App.css';
-import Login from "./Pages/Login/index";
-import Inscription from "./Pages/Inscription/index";
+
 function App() {
   return (
     <div className="App">
-        <Login/>
-        {/* <Inscription/> */}
+      <Routes />
     </div>
   );
 }

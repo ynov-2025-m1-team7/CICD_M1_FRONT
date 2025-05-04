@@ -1,70 +1,78 @@
 import React, { useState } from 'react';
-import Input from '../Input';
+import axios from 'axios';
+import Input from "../Input";
+import FormButton from "../FormButton";
+import Cookies from 'js-cookie';
+import "./style.css";
 
 const LoginForm = () => {
-    const [inputs, setInputs] = useState({
+    const [form, setForm] = useState({
         email: '',
         password: ''
     });
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
+    // const navigate = useNavigate();
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        setLoading(true);
+        setError(null);
+
+        try {
+            const response = await axios.post('http://localhost:3001/Login', form);
+            Cookies.set('token', response.headers['authorization'], {
+                path: '/',
+                secure: true,
+                sameSite: 'Strict',
+                expires: 1
+            });
+        } catch (err) {
+            console.error(err);
+            setError('Identifiants incorrects. Veuillez réessayer.');
+        } finally {
+            setLoading(false);
+        }
+    };
 
     const handleChange = (e) => {
         const { name, value } = e.target;
-        setInputs(prev => ({
-            ...prev,
+        setForm((prevForm) => ({
+            ...prevForm,
             [name]: value
         }));
     };
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        setLoading(true);
-        setTimeout(() => {
-            setLoading(false);
-            alert(`Email: ${inputs.email}, Password: ${inputs.password}`);
-        }, 1000);
-    };
+    return (
+        <form className="login-form" onSubmit={handleSubmit}>
+            <h1 className="login-form__title">Connexion</h1>
 
-    return React.createElement(
-        'form',
-        { onSubmit: handleSubmit },
-        [
-            React.createElement('h1', { key: 'title' }, 'Login'),
+            <Input
+                type="email"
+                name="email"
+                placeholder="Email"
+                value={form.email}
+                onChange={handleChange}
+            />
+            <Input
+                type="password"
+                name="password"
+                placeholder="Mot de passe"
+                value={form.password}
+                onChange={handleChange}
+            />
 
-            React.createElement(Input, {
-                key: 'email',
-                type: 'email',
-                name: 'email',
-                placeholder: 'Email',
-                value: inputs.email,
-                onChange: handleChange
-            }),
+            {error && <p className="error">{error}</p>}
 
-            React.createElement(Input, {
-                key: 'password',
-                type: 'password',
-                name: 'password',
-                placeholder: 'Password',
-                value: inputs.password,
-                onChange: handleChange
-            }),
+            <FormButton
+                type="submit"
+                className="form-button"
+                disabled={loading}
+                title="Se connecter"
+            />
 
-            React.createElement(
-                'button',
-                { key: 'submit', type: 'submit', disabled: loading },
-                loading ? 'Chargement...' : 'Login'
-            ),
-
-            error
-                ? React.createElement('p', {
-                    key: 'error',
-                    style: { color: 'red' }
-                }, error)
-                : null,
-
-            React.createElement('p', { key: 'signup' }, "S'inscrire")
-        ]
+            <p><a href="/signup">S'inscrire</a></p>
+        </form>
     );
 };
 

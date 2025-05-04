@@ -1,50 +1,94 @@
+import React, { useState } from 'react';
+import axios from 'axios';
 import Input from "../Input";
+import FormButton from "../FormButton";
+import Cookies from 'js-cookie';
+import "./style.css";
 
 const InscriptionForm = () => {
+    const [form, setForm] = useState({
+        name: '',
+        email: '',
+        password: '',
+        confirmPassword: ''
+    });
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState(null);
+    // const navigate = useNavigate();
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        setLoading(true);
+        setError(null);
+
+        try {
+            const response = await axios.post('http://localhost:3001/SignIn', form);
+            Cookies.set('token', response.headers['authorization'], {
+                path: '/',
+                secure: true,
+                sameSite: 'Strict',
+                expires: 1
+            });
+        } catch (err) {
+            console.error(err);
+            setError('Identifiants incorrects. Veuillez réessayer.');
+        } finally {
+            setLoading(false);
+        }
+    };
+
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setForm((prevForm) => ({
+            ...prevForm,
+            [name]: value
+        }));
+    };
+
     return (
-        <form>
+        <form className="signin-form" onSubmit={handleSubmit}>
+            <h1 className="signin-form__title">S'inscrire</h1>
+
             <Input
-                name="users"
                 type="text"
-                label="Nom d'utilisateur"
+                name="name"
                 placeholder="Nom d'utilisateur"
-                value={""}
-                onChange={()=> {}}
+                value={form.name}
+                onChange={handleChange}
             />
             <Input
-                name="email"
                 type="email"
-                label="Email"
+                name="email"
                 placeholder="Email"
-                value={""}
-                onChange={() => {}}
+                value={form.email}
+                onChange={handleChange}
             />
             <Input
+                type="password"
                 name="password"
-                type="password"
-                label="Mot de passe"
                 placeholder="Mot de passe"
-                value={""}
-                onChange={() => {}}
+                value={form.password}
+                onChange={handleChange}
             />
             <Input
-                name="confirm_password"
                 type="password"
-                label="Confirmer le mot de passe"
-                placeholder="Confirmer le mot de passe"
-                value={""}
-                onChange={() => {}}
+                name="confirmPassword"
+                placeholder="confirmer mot de passe"
+                value={form.confirmPassword}
+                onChange={handleChange}
             />
-        <button type="submit" disabled={false}>
-            {false ? 'Chargement...' : 'Login'}
-        </button>
 
-        {/*error && <ErrorMessage>{error}</ErrorMessage>*/}
-        {/*loading && <LoadingMessage>Connexion en cours...</LoadingMessage>*/}
+            {error && <p className="error">{error}</p>}
 
-        <p>s'inscrire</p>
-    </form>
+            <FormButton
+                type="submit"
+                disabled={loading}
+                title="Inscription"
+            />
+
+            <p><a href="/login">Connexion</a></p>
+        </form>
     );
-}
+};
 
 export default InscriptionForm;
