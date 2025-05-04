@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import Input from '../../Compossant/Input';
 import LoginForm from '../../Compossant/LoginForm/index';
-
+//import './style.css';
 function InputField(props) {
     return React.createElement('input', {
         type: props.type || 'text',

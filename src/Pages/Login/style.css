@@ -1,24 +1,28 @@
 /* Style général */
 body {
     font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
     margin: 0;
     padding: 0;
+    height: 100vh;
+    display: flex;
+
+    /* Divise l'écran visuellement en deux */
+    background: url('login_background.png') left / 50% 100% no-repeat;
+    background-color: #f0f0f0; /* fallback */
+}
+
+/* Conteneur principal à droite */
+.right-panel {
+    flex: 1;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-
-        background: url('login_background.png') left / cover no-repeat;
-    
-    background-size: cover;
-    background-position: left;
 }
 
 /* Conteneur du formulaire */
 .form-wrapper {
-    background-color: rgba(255, 255, 255, 0.9); /* Fond semi-transparent */
-    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 20px 30px;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
     width: 350px;
@@ -33,14 +37,13 @@ body {
 }
 
 /* Champs de texte */
-input{
+input {
     width: 100%;
     padding: 12px;
     margin: 10px 0;
     border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 16px;
     border-radius: 50px;
+    font-size: 16px;
 }
 
 /* Bouton de soumission */
@@ -50,11 +53,10 @@ button {
     background-color: #1F2937;
     color: white;
     border: none;
-    border-radius: 5px;
+    border-radius: 50px;
     font-size: 16px;
     cursor: pointer;
     transition: 0.3s ease-in-out;
-    border-radius: 50px;
 }
 
 button:hover {
@@ -62,7 +64,7 @@ button:hover {
     color: #1F2937;
 }
 
-/* Style du lien d'inscription */
+/* Lien d'inscription */
 p {
     margin-top: 15px;
     font-size: 14px;
@@ -78,12 +80,9 @@ p a:hover {
     text-decoration: underline;
 }
 
-h1{
+h1 {
     color: black;
     font-size: 30px;
     font-family: 'Agbalumo', serif;
     text-align: right;
-}
-button.submit {
-    float: right;
 }
