@@ -37,12 +37,16 @@ const router = createBrowserRouter([
         <JsonFormPage/>
       </ProtectedRoute>,
   },
+  // {
+  //   path: "/notification",
+  //   element: 
+  //     <ProtectedRoute>
+  //       <NotificationsPage/>
+  //     </ProtectedRoute>,
+  // },
   {
-    path: "/notification",
-    element: 
-      <ProtectedRoute>
-        <NotificationsPage/>
-      </ProtectedRoute>,
+    path: "*",
+    element: <div>Page Not Found</div>,
   }
 ]);
   
