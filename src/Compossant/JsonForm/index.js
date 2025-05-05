@@ -15,31 +15,37 @@ const JsonForm = () => {
     e.preventDefault();
     setLoading(true);
     setError(null);
-
-    const formData = new FormData();
-    formData.append("file", form.file);
-
+  
+    if (!form.file) {
+      setError("Veuillez sélectionner un fichier JSON.");
+      setLoading(false);
+      return;
+    }
+  
     try {
-        console.log(`${process.env.REACT_APP_API_URL}/feedbacks/upload`);
-        
+      const text = await form.file.text(); // Read file as text
+      const json = JSON.parse(text); // Parse to JSON
+  
       const response = await axios.post(
         `${process.env.REACT_APP_API_URL}/feedbacks/upload`,
-        formData,
+        json,
         {
           headers: {
-            'Content-Type': 'multipart/form-data',
+            'Content-Type': 'application/json',
           },
         }
       );
+  
       console.log(response.data);
-      // navigate("/success"); // Optionnel
+      // navigate("/success");
     } catch (err) {
       console.error(err);
-      setError("Une erreur est survenue lors de l'envoi du fichier. Veuillez réessayer.");
+      setError("Le fichier n'est pas un JSON valide ou l'envoi a échoué.");
     } finally {
       setLoading(false);
     }
   };
+  
 
   const handleChange = (e) => {
     if (e.target.name === "file") {
