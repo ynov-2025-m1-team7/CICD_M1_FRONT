@@ -3,6 +3,7 @@ import DashboardPage from "../Pages/Dashboard/index";
 import FeedbackPage from "../Pages/Feedback";
 import Login from "../Pages/Login";
 import Inscription from "../Pages/Inscription";
+import JsonFormPage from "../Pages/AddData";
 import NotificationsPage from "../Pages/Notification";
 
 const router = createBrowserRouter([
@@ -23,6 +24,9 @@ const router = createBrowserRouter([
     element: <Inscription/>,
   },
   {
+    path: "/add-data",
+    element: <JsonFormPage/>,
+  },
     path: "/notification",
     element: <NotificationsPage/>,
   }
