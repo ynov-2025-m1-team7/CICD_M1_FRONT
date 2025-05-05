@@ -5,7 +5,7 @@ import Dashboard from "../../Compossant/Dashboard";
 const DashboardPage = () => {
     return (
         <div className="Dashboard">
-            <Header />
+            {/* <Header /> */}
             <PageContainer component={<Dashboard/>}/>
         </div>
     );

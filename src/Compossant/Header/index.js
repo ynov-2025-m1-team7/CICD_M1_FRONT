@@ -25,16 +25,16 @@ const Header = () => {
   };
 
   return (
-    <header style={headerStyle}>
-      <div style={searchContainerStyle}>
+    <header>
+      <div>
         <input
           type="text"
           placeholder="Search"
           value={searchTerm}
           onChange={handleSearchChange}
-          style={inputStyle}
+          
         />
-        <select value={sortOption} onChange={handleSortChange} style={selectStyle}>
+        <select value={sortOption} onChange={handleSortChange}>
           <option value="asc">Sort Ascending</option>
           <option value="desc">Sort Descending</option>
         </select>
@@ -44,7 +44,7 @@ const Header = () => {
         {data
           .filter(item => item.name.toLowerCase().includes(searchTerm.toLowerCase()))
           .map(item => (
-            <div key={item.id} style={itemStyle}>
+            <div key={item.id}>
               <p>{item.name}</p>
               <p>{item.date}</p>
             </div>
