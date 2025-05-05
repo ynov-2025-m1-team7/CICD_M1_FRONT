@@ -27,6 +27,7 @@ const router = createBrowserRouter([
     path: "/add-data",
     element: <JsonFormPage/>,
   },
+  {
     path: "/notification",
     element: <NotificationsPage/>,
   }
