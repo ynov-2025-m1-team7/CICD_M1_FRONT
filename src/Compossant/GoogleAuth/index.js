@@ -38,10 +38,6 @@ const GoogleLogin = () => {
   }, []);
 
   const handleCredentialResponse = (response) => {
-    console.log("Token JWT :", response.credential);
-    const user = parseJwt(response.credential);
-    console.log("Utilisateur :", user);
-
     Cookies.set('jwt_token', response.credential, {
         expires: 7, // en jours
         secure: true, // recommandé en production (HTTPS)

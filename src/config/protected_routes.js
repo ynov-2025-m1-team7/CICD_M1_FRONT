@@ -3,8 +3,6 @@ import Cookies from "js-cookie";
 
 const ProtectedRoute = ({ children }) => {
   const token = Cookies.get("jwt_token");
-  console.log("Token JWT :", token); // Debugging line
-  
 
   if (!token) {
     return <Navigate to="/signin" replace />;
