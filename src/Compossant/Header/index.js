@@ -25,7 +25,8 @@ const Header = () => {
       <div className="header__buttons">
         <DisconectButton
           onClick={() => {
-            Cookies.remove("jwt_token", { path: "/" });
+            Cookies.remove("jwt_token", { path: "/" })
+            navigate("/signin");
           }}
         />
       </div>

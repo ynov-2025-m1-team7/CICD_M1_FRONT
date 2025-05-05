@@ -2,7 +2,7 @@ import "./style.css";
 
 const HeaderButton = ({ text, onClick }) => {
     return (
-        <button className="disconect-button" onClick={onClick}>
+        <button className="header-button" onClick={onClick}>
             {text}
         </button>
     );
