@@ -3,6 +3,7 @@ import axios from 'axios';
 import Input from "../Input";
 import FormButton from "../FormButton";
 import Cookies from 'js-cookie';
+import { useNavigate } from 'react-router-dom';
 import "./style.css";
 
 const InscriptionForm = () => {
@@ -14,7 +15,7 @@ const InscriptionForm = () => {
     });
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
-    // const navigate = useNavigate();
+    const navigate = useNavigate();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -86,7 +87,7 @@ const InscriptionForm = () => {
                 title="Inscription"
             />
 
-            <p><a href="/login">Connexion</a></p>
+            <p onClick={() => {navigate("/login")}}>Connexion</p>
         </form>
     );
 };

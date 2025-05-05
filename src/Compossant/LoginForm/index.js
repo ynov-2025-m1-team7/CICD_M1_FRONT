@@ -3,6 +3,7 @@ import axios from 'axios';
 import Input from "../Input";
 import FormButton from "../FormButton";
 import Cookies from 'js-cookie';
+import { useNavigate } from 'react-router-dom';
 import "./style.css";
 
 const LoginForm = () => {
@@ -12,7 +13,7 @@ const LoginForm = () => {
     });
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
-    // const navigate = useNavigate();
+    const navigate = useNavigate();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -71,7 +72,7 @@ const LoginForm = () => {
                 title="Se connecter"
             />
 
-            <p><a href="/signup">S'inscrire</a></p>
+            <p onClick={() => {navigate("/signin")}}>S'inscrire</p>
         </form>
     );
 };
