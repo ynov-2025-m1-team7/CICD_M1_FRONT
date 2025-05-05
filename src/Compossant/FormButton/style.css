@@ -1,0 +1,21 @@
+.form-button {
+    background-color: #1F2937;
+    color: white;
+    font-size: 20px;
+    padding: 12px;
+    width: 52%;
+    border-radius: 50px;
+    margin: 10px 0;
+}
+
+.form-button:hover {
+    background-color: #374151;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 680px) {
+    .form-button {
+        font-size: 15px;
+        padding: 8px;
+    }
+}
