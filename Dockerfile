@@ -15,6 +15,8 @@ FROM node:${NODE_VERSION}-alpine as base
 # Set working directory for all build stages.
 WORKDIR /usr/src/app
 
+# Set proper permissions for the app directory
+RUN chmod -R 777 /usr/src/app
 
 ################################################################################
 # Create a stage for installing production dependecies.
@@ -55,6 +57,8 @@ ENV NODE_ENV production
 
 WORKDIR /app
 
+# Set proper permissions for the app directory
+RUN chmod -R 777 /app
 
 # Copy package.json so that package manager commands can be used.
 COPY package.json .
