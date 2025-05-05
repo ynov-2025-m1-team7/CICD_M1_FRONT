@@ -5,15 +5,22 @@ import Login from "../Pages/Login";
 import Inscription from "../Pages/Inscription";
 import JsonFormPage from "../Pages/AddData";
 import NotificationsPage from "../Pages/Notification";
+import ProtectedRoute from "./protected_routes";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <DashboardPage/>,
+    element:  
+      <ProtectedRoute>
+        <DashboardPage/>
+      </ProtectedRoute>,
   },
   {
     path: "/feedback",
-    element: <FeedbackPage/>,
+    element: 
+      <ProtectedRoute>
+        <FeedbackPage/>
+      </ProtectedRoute>,
   },
   {
     path: "/login",
@@ -25,11 +32,17 @@ const router = createBrowserRouter([
   },
   {
     path: "/add-data",
-    element: <JsonFormPage/>,
+    element: 
+      <ProtectedRoute>
+        <JsonFormPage/>
+      </ProtectedRoute>,
   },
   {
     path: "/notification",
-    element: <NotificationsPage/>,
+    element: 
+      <ProtectedRoute>
+        <NotificationsPage/>
+      </ProtectedRoute>,
   }
 ]);
   
