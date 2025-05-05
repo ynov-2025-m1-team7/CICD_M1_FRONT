@@ -7,13 +7,13 @@ const Header = () => {
   const [sortOption, setSortOption] = useState('asc');
   const [data, setData] = useState([]);
 
-  useEffect(() => {
+  /*useEffect(() => {
     const fetchData = async () => {
       const response = await axios.get(`${process.env.REACT_APP_API_URL}/data`);
       setData(response.data);
     };
     fetchData();
-  }, []);
+  }, []);*/
   
   const handleSearchChange = (e) => {
     setSearchTerm(e.target.value);
