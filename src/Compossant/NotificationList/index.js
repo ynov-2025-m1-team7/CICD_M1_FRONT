@@ -13,11 +13,6 @@ const NotificationList = ({ notifications }) => {
   );
 };
 
-// const styles = {
-//   list: {
-//     listStyleType: "none",
-//     padding: 0
-//   }
-// };
+
 
 export default NotificationList;
