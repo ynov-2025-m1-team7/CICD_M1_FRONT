@@ -8,4 +8,12 @@ const HeaderButton = ({ text, onClick }) => {
     );
 }
 
-export default HeaderButton;
+const DisconectButton = ({ onClick }) => {
+    return (
+        <button className="disconect-button" onClick={onClick}>
+            Déconnexion
+        </button>
+    );
+}
+
+export {HeaderButton, DisconectButton};

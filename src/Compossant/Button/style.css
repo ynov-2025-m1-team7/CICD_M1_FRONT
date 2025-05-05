@@ -1,4 +1,4 @@
-.disconect-button {
+.header-button, .disconect-button {
     height: 30px;
     padding: 24px 32px;
     border-radius: 32px;
@@ -13,14 +13,30 @@
     font-size: 16px;
 }
 
-.disconect-button:hover {
+.disconect-button {
+    background-color: #EF4444;
+    color: white;
+}
+
+.header-button {
+    background-color: #E5E7EB;
+    color: black;
+}
+
+.header-button:hover {
     background-color: #CBD5E1;
     cursor: pointer;
     transition: all 0.5s ease-in-out;
 }
 
+.disconect-button:hover {
+    background-color: #de2121;
+    cursor: pointer;
+    transition: all 0.5s ease-in-out;
+}
+
 @media screen and (max-width: 680px) {
-    .disconect-button {
+    .header-button {
         padding: 16px 24px;
         font-size: 12px;
     }

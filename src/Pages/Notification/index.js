@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import NotificationList from "../../Compossant/NotificationList";
 import PageContainer from "../../Compossant/PageContainer";
 import "./style.css";
+import Header from "../../Compossant/Header";
 
 
 const NotificationsPage = () => {
@@ -12,7 +13,10 @@ const NotificationsPage = () => {
   ]);
 
   return (
-    <PageContainer component={<NotificationList notifications={notifications} />} />
+    <div className="notification-page">
+      <Header />
+      <PageContainer component={<NotificationList notifications={notifications} />} />
+    </div>
   );
 };
 

@@ -1,5 +1,5 @@
 import "./style.css";
-import HeaderButton from "../Button";
+import {HeaderButton, DisconectButton} from "../Button";
 import { useNavigate, useLocation } from "react-router-dom";
 import Cookies from "js-cookie"; // Assure-toi d’avoir installé js-cookie
 
@@ -9,8 +9,8 @@ const Header = () => {
 
   return (
     <header>
-      <h1 className="WebsiteName" onClick={()=>{navigate('/')}}>Test</h1>
-      {path === "/feedback" && (
+      <h1 className="WebsiteName" onClick={()=>{navigate('/')}}>Feelin'It</h1>
+      {path === "/feedback" ? (
         <div className="header__buttons">
           <HeaderButton
             text="Ajouter un feedback"
@@ -19,6 +19,17 @@ const Header = () => {
             }}
           />
         </div>
+      ) 
+    :
+    (
+      <div className="header__buttons">
+        <DisconectButton
+          onClick={() => {
+            Cookies.remove("token", { path: "/" });
+            navigate("/signin");
+          }}
+        />
+      </div>
       )}
     </header>
   );
