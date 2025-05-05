@@ -9,7 +9,7 @@ const Header = () => {
 
   return (
     <header>
-      <h1 className="WebsiteName">Test</h1>
+      <h1 className="WebsiteName" onClick={()=>{navigate('/')}}>Test</h1>
       {path === "/feedback" && (
         <div className="header__buttons">
           <HeaderButton

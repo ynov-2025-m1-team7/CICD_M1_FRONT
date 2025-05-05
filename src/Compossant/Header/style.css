@@ -12,6 +12,7 @@ header {
 .WebsiteName {
   font-size: 32px;
   font-weight: bold;
+  cursor: pointer;
 }
 
 @media screen and (max-width:680px){
