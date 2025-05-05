@@ -10,11 +10,8 @@ const feedbacks = [
 const FeedbackPage = () => {
     return (
         <div className="Dashboard">
-
-
             <Header />
             <PageContainer component={<Feedback_Card feedbacks={feedbacks}/>}/>
-
         </div>
     );
 }

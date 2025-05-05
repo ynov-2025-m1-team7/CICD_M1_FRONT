@@ -52,6 +52,7 @@ const FeedbackList = ({ feedbacks }) => {
         display: 'flex',
         justifyContent: 'space-between',
         alignItems: 'center',
+        margin: '16px 32px 0 0',
     };
 
     const inputStyle = {
@@ -123,7 +124,7 @@ const FeedbackList = ({ feedbacks }) => {
                 {loading ? ( // Check if loading
                     <p>Loading...</p> // Display loading message
                 ) : (
-                    <ul style={{ listStyleType: 'none', padding: 0, marginRight: '20px' }}>
+                    <ul style={{ listStyleType: 'none', padding: 0, marginRight: '32px' }}>
                         {filteredData().map(item => (
                             <li key={item.id} style={{ border: '1px solid #e0e0e0', padding: '10px', margin: '10px 0', borderRadius: '5px', backgroundColor: '#f9f9f9' }}>
                                 <div style={{ display: 'flex', alignItems: 'center' }}>
