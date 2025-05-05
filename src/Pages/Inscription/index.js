@@ -8,6 +8,7 @@ const Inscription = () => {
         <div className="signin-container">
             <InscriptionForm/>
             <IdentificationBanner title={"Bienvenue"} />
+            
         </div>
     );
 };

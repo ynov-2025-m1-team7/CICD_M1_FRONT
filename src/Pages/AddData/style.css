@@ -1,0 +1,10 @@
+.json-form-container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    height: 100vh;
+    background-image: url("../../../public/assets/login_banner.png");
+    background-size: cover;
+}

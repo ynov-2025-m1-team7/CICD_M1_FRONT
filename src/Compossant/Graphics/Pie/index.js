@@ -14,13 +14,14 @@ import {
 // Enregistrer les composants nécessaires de Chart.js
 ChartJS.register(Title, Tooltip, Legend, ArcElement, CategoryScale, LinearScale);
 
-const MyPieChart = () => {
-  // Données du graphique
+const MyPieChart = ({labels, values}) => {
+  console.log(values);
+  
   const data = {
-    labels: ['JavaScript', 'Python', 'Java', 'C++'],
+    labels: labels,
     datasets: [
       {
-        data: [40, 25, 20, 15], // Valeurs des sections du graphique
+        data: [values.low, values.medium, values.high], // Valeurs des sections du graphique
         backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0'], // Couleurs des sections
         borderColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0'], // Couleurs des bordures
         borderWidth: 1, // Épaisseur des bordures des secteurs
