@@ -20,7 +20,30 @@ const SortByDate = (rawData) => {
       .slice(0, 7); // ← limite à 7 éléments
   
     return { uniqueData, dataByDateArray };
-  };
+};
+
+const SortByFeeling = (rawData) => {
+    if (!Array.isArray(rawData)) return { low: 0, medium: 0, high: 0 };
+
+    // Filtrer uniquement les items valides avec un score numérique
+    const validData = rawData.filter(item => typeof item.score === 'number');
+
+    const total = validData.length;
+
+    if (total === 0) return { low: 0, medium: 0, high: 0 };
+
+    const low = (validData.filter(item => item.score < 0.33).length / total) * 100;
+    const medium = (validData.filter(item => item.score >= 0.33 && item.score <= 0.66).length / total) * 100;
+    const high = (validData.filter(item => item.score > 0.66).length / total) * 100;
+
+    // Retourner des pourcentages arrondis à 1 décimale
+    return {
+        low: parseFloat(low.toFixed(1)),
+        medium: parseFloat(medium.toFixed(1)),
+        high: parseFloat(high.toFixed(1)),
+    };
+};
+
   
-  export { SortByDate };
+export { SortByDate, SortByFeeling };
   

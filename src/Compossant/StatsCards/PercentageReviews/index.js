@@ -1,15 +1,27 @@
 import "./style.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
-const PercentageReviews = () => {
-    const [percentage, setPercentage] = useState(80); // Example percentage value, you can change it as needed
-    const [color, setColor] = useState("green"); // Example color value, you can change it as needed
+const PercentageReviews = ({ value }) => {
+    const [color, setColor] = useState("green");
+
+    useEffect(() => {
+        if (value < 30) {
+            setColor("red");
+        } else if (value > 70) {
+            setColor("green");
+        } else {
+            setColor("orange");
+        }
+    }, [value]); // Met à jour la couleur uniquement quand `value` change
+
     return (
         <div className="PercentageReviewsContainer">
             <h2>% Critique</h2>
-            <p className={`PercentageReviewsText-${color}`}>{percentage}%</p>
+            <p className={`PercentageReviewsText-${color}`}>
+                {value}%
+            </p>
         </div>
     );
-}
+};
 
 export default PercentageReviews;
