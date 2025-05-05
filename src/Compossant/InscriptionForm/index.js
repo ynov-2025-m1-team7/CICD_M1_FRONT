@@ -3,6 +3,7 @@ import axios from 'axios';
 import Input from "../Input";
 import FormButton from "../FormButton";
 import Cookies from 'js-cookie';
+import GoogleLogin from '../GoogleAuth';
 import { useNavigate } from 'react-router-dom';
 import "./style.css";
 
@@ -86,8 +87,10 @@ const InscriptionForm = () => {
                 disabled={loading}
                 title="Inscription"
             />
-
             <p onClick={() => {navigate("/login")}}>Connexion</p>
+            <p>ou</p>
+            <GoogleLogin/>
+            
         </form>
     );
 };

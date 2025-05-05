@@ -23,13 +23,13 @@ ChartJS.register(
   Legend
 );
 
-const MyLineChart = () => {
+const MyLineChart = ({ labels, values }) => {
   const data = {
-    labels: ['Lundi', 'Merdi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi', 'Dimanche'],
+    labels: labels,
     datasets: [
       {
         label: 'Visiteur par jour',
-        data: [100, 200, 150, 300, 250, 400],
+        data: values,
         borderColor: '#36A2EB',
         backgroundColor: 'rgba(54, 162, 235, 0.2)',
         tension: 0.3, // courbure des lignes
@@ -55,6 +55,7 @@ const MyLineChart = () => {
       },
     },
   };
+  
 
   return (
     <div className='Line-Chart-Container'>
