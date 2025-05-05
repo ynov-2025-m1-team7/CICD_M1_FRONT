@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from "axios";
 
 const FeedbackList = ({ feedbacks }) => {
@@ -47,6 +47,7 @@ const FeedbackList = ({ feedbacks }) => {
             item.text && item.text.toLowerCase().includes(searchTerm.toLowerCase())
         );
     };
+
     const searchContainerStyle = {
         display: 'flex',
         justifyContent: 'space-between',
@@ -71,48 +72,78 @@ const FeedbackList = ({ feedbacks }) => {
         padding: '10px',
         borderBottom: '1px solid #dee2e6',
     };
-    return (
-    <div>
-        <div style={searchContainerStyle}>
-            <input
-                type="text"
-                placeholder="Search"
-                value={searchTerm}
-                onChange={handleSearchChange}
-                style={inputStyle}
-            />
-            <select value={sortOption} onChange={handleSortChange} style={selectStyle}>
-                <option value="asc">Sort Ascending</option>
-                <option value="desc">Sort Descending</option>
-            </select>
-        </div>
-        <div>
-            {loading ? ( // Check if loading
-                <p>Loading...</p> // Display loading message
-            ) : (
-                <ul style={{ listStyleType: 'none', padding: 0, marginRight: '20px' }}>
-                    {filteredData().map(item => (
-                        <li key={item.id} style={{ border: '1px solid #e0e0e0', padding: '10px', margin: '10px 0', borderRadius: '5px', backgroundColor: '#f9f9f9' }}>
-                            <div style={{ display: 'flex', alignItems: 'center' }}>
-                                <div style={{ marginRight: '20px' }}>
-                                    {/* Ajout d'un smiley (emoji) */}
-                                    <span role="img" aria-label="smiley">😊</span>
-                                </div>
-                                <div>
-                                    <strong>{item.channel}</strong> {/* Affichage du canal (ex: twitter) */}
-                                    <p style={{ margin: '5px 0' }}>
-                                        {item.id} <span style={{ color: '#999' }}>{new Date(item.date).toLocaleString()}</span>
-                                    </p> {/* Affichage du timestamp formaté */}
-                                    <p>{item.text}</p> {/* Commentaire */}
-                                </div>
-                            </div>
-                        </li>
-                    ))}
-                </ul>
-            )}
-        </div>
-    </div>
 
+    // Function to determine the appropriate smiley based on score
+    const getSmileyImage = (score) => {
+        if (score < 1) {
+            return (
+                <img
+                    src="/assets/Feedback/SadSmiley.svg" // Replace with the actual path to your tear smiley SVG
+                    alt="Tear Smiley"
+                    style={{ width: '24px', height: '24px' }}
+                />
+            );
+        } else if (score >= 0.5) {
+            return (
+                <img
+                    src="/assets/Feedback/NeutralSmiley.svg" // Replace with the actual path to your happy smiley SVG
+                    alt="Neutral Smiley"
+                    style={{ width: '24px', height: '24px' }}
+                />
+            );
+        }
+        else
+        {
+            return (
+                <img
+                    src="/assets/Feedback/HappySmiley.svg" // Replace with the actual path to your happy smiley SVG
+                    alt="Happy Smiley"
+                    style={{ width: '24px', height: '24px' }}
+                />
+            );
+        }
+    };
+
+    return (
+        <div>
+            <div style={searchContainerStyle}>
+                <input
+                    type="text"
+                    placeholder="Search"
+                    value={searchTerm}
+                    onChange={handleSearchChange}
+                    style={inputStyle}
+                />
+                <select value={sortOption} onChange={handleSortChange} style={selectStyle}>
+                    <option value="asc">Sort Ascending</option>
+                    <option value="desc">Sort Descending</option>
+                </select>
+            </div>
+            <div>
+                {loading ? ( // Check if loading
+                    <p>Loading...</p> // Display loading message
+                ) : (
+                    <ul style={{ listStyleType: 'none', padding: 0, marginRight: '20px' }}>
+                        {filteredData().map(item => (
+                            <li key={item.id} style={{ border: '1px solid #e0e0e0', padding: '10px', margin: '10px 0', borderRadius: '5px', backgroundColor: '#f9f9f9' }}>
+                                <div style={{ display: 'flex', alignItems: 'center' }}>
+                                    <div style={{ marginRight: '20px' }}>
+                                        {getSmileyImage(item.score)} {/* Display the appropriate smiley based on score */}
+                                    </div>
+                                    <div>
+                                        < strong>{item.channel}</strong> {/* Display the channel (e.g., Twitter) */}
+                                        <p style={{ margin: '5px 0' }}>
+                                            {item.id} <span style={{ color: '#999' }}>{new Date(item.date).toLocaleString()}</span>
+                                        </p> {/* Display the formatted timestamp */}
+                                        <p>{item.text}</p> {/* Comment */}
+                                    </div>
+                                </div>
+                            </li>
+                        ))}
+                    </ul>
+                )}
+            </div>
+        </div>
     );
 };
 
