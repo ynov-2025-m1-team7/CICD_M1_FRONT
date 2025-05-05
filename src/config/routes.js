@@ -3,6 +3,7 @@ import DashboardPage from "../Pages/Dashboard/index";
 import FeedbackPage from "../Pages/Feedback";
 import Login from "../Pages/Login";
 import Inscription from "../Pages/Inscription";
+import NotificationsPage from "../Pages/Notification";
 
 const router = createBrowserRouter([
   {
@@ -20,6 +21,10 @@ const router = createBrowserRouter([
   {
     path: "/signin",
     element: <Inscription/>,
+  },
+  {
+    path: "/notification",
+    element: <NotificationsPage/>,
   }
 ]);
   
