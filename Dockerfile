@@ -10,6 +10,10 @@ COPY package*.json ./
 # Install dependencies
 RUN npm install
 
+# Write environment variables to a .env file before building
+RUN echo "REACT_APP_API_URL=\"https://cicdm1.onrender.com\"" > .env \
+    && echo "REACT_APP_GOOGLE_OAUTH_CLIENT_ID=\"52040285425-oi8cuem7ihdra1lqp3l5ashu39hst1e5.apps.googleusercontent.com\"" >> .env
+
 # Copy the rest of the application code to the working directory
 COPY . .
 
