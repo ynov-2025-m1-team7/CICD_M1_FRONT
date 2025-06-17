@@ -1,6 +1,10 @@
 import "./style.css";
 
 const FormButton = ({ type, title, onClick, disabled=false }) => {
+    if (!type || !title || !onClick) {
+        throw new Error("Type, title, and onClick are required props");
+    }
+
     return (
         <button 
             type={type}

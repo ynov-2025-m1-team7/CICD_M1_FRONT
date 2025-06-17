@@ -6,7 +6,11 @@ const AvarageFeeling = ({value}) => {
         icon :"/assets/Feedback/NeutralSmiley.svg",
         label : "Neutre"
     });
-    
+
+    if (!value) {
+        throw new Error("La valeur moyenne du sentiment est requise");
+    }
+
     useEffect(() => {
         if (value < 0.4) {
             setData({

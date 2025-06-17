@@ -41,6 +41,11 @@ const InscriptionForm = () => {
 
     const handleChange = (e) => {
         const { name, value } = e.target;
+
+        if (!name) {
+            throw new Error("Name is required for handleChange");
+        }
+
         setForm((prevForm) => ({
             ...prevForm,
             [name]: value

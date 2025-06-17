@@ -3,6 +3,10 @@ import NotificationItem from "../NotificationItem";
 import "./style.css";
 
 const NotificationList = ({ notifications }) => {
+  if (!notifications || !Array.isArray(notifications)) {
+    throw new Error("Notifications must be an array");
+  }
+
   return (
     <div className="notification-list">
         <h2>Notifications</h2>
