@@ -16,7 +16,7 @@ const FeedbackList = ({ feedbacks }) => {
                     .map(id => response.data.find(item => item.id === id));
                 setData(uniqueData);
             } catch (error) {
-                console.error("Erreur lors de la récupération des données :", error);
+                throw new Error("Erreur lors de la récupération des données :", error);
             } finally {
                 setLoading(false); // Set loading to false after data is fetched
             }

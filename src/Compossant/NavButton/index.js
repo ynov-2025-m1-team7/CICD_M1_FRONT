@@ -8,6 +8,7 @@ const NavButton = ({ text, image, imageSelected, id, redirection = "", onClick }
     if (path === redirection && redirection !== "") {
         selected = true;
     }
+    
     return (
         <button
             className={`nav-button-${id}-${selected ? "selected" : "unselected"}`}

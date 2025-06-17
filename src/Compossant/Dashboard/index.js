@@ -16,8 +16,7 @@ const parseJwt = (token) => {
         const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
         return JSON.parse(atob(base64));
     } catch (e) {
-        console.error("Erreur de parsing du JWT :", e);
-        return null;
+        throw new Error("Erreur de parsing du JWT :", e);
     }
 };
 
@@ -52,7 +51,7 @@ const Dashboard = () => {
                 setAverageScore(response.data.average_score); // Score moyen
                 setCountByFeeling(dataByFeelings); // Données par sentiment
             } catch (error) {
-                console.error("Erreur lors de la récupération des données :", error);
+                throw new Error("Erreur lors de la récupération des données :", error);
             } finally {
                 setLoading(false);
             }

@@ -33,7 +33,7 @@ const InscriptionForm = () => {
             });
         } catch (err) {
             console.error(err);
-            setError('Identifiants incorrects. Veuillez réessayer.');
+            throw new Error("Erreur lors de la récupération des données :", err);
         } finally {
             setLoading(false);
         }

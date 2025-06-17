@@ -39,8 +39,8 @@ const JsonForm = () => {
       console.log(response.data);
       // navigate("/success");
     } catch (err) {
-      console.error(err);
       setError("Le fichier n'est pas un JSON valide ou l'envoi a échoué.");
+      throw new Error("Erreur lors de la récupération des données :", err);
     } finally {
       setLoading(false);
     }

@@ -30,7 +30,8 @@ const LoginForm = () => {
             });
         } catch (err) {
             console.error(err);
-            setError('Identifiants incorrects. Veuillez réessayer.');
+            setError('Identifiants incorrects. Veuillez réessayer.', err);
+            throw new Error(error);
         } finally {
             setLoading(false);
         }
