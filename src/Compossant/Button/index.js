@@ -1,8 +1,16 @@
 import "./style.css";
+import * as Sentry from "@sentry/react";
 
 const HeaderButton = ({ text, onClick }) => {
+    const currentPath = window.location.pathname;
+
     if (!text || !onClick) {
-        throw new Error("Text and onClick are required props");
+        Sentry.captureMessage("Text and onClick are required props", {
+            level: "error",
+            tags: {
+                route: currentPath,
+            },
+        });
     }
 
     return (
@@ -14,7 +22,12 @@ const HeaderButton = ({ text, onClick }) => {
 
 const DisconectButton = ({ onClick }) => {
     if (!onClick) {
-        throw new Error("onClick is a required prop");
+        Sentry.captureMessage("onClick is a required prop", {
+            level: "error",
+            tags: {
+                route: "/",
+            },
+        });
     }
 
     return (

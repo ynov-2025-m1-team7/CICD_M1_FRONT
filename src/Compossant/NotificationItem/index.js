@@ -1,9 +1,17 @@
 import React from "react";
 import "./style.css";
+import * as Sentry from "@sentry/react";
 
 const NotificationItem = ({ date, message }) => {
+  const currentPath = window.location.pathname;
+
   if (!date || !message) {
-    throw new Error("Date and message are required for NotificationItem");
+    Sentry.captureMessage("Date and message are required for NotificationItem", {
+      level: "error",
+      tags: {
+        route: currentPath,
+      },
+    });
   }
 
   return (

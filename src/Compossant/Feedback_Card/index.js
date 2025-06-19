@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import axios from "axios";
+import * as Sentry from "@sentry/react";
 
 const FeedbackList = ({ feedbacks }) => {
     const [searchTerm, setSearchTerm] = useState('');
     const [sortOption, setSortOption] = useState('asc');
     const [data, setData] = useState([]);
-    const [loading, setLoading] = useState(true); // New loading state
+    const [loading, setLoading] = useState(true);
+    const currentPath = window.location.pathname;
 
     useEffect(() => {
         const fetchData = async () => {
@@ -16,7 +18,12 @@ const FeedbackList = ({ feedbacks }) => {
                     .map(id => response.data.find(item => item.id === id));
                 setData(uniqueData);
             } catch (error) {
-                throw new Error("Erreur lors de la récupération des données :", error);
+                Sentry.captureMessage("Erreur lors de la récupération des données", {
+                    level: "error",
+                    tags: {
+                        route: currentPath,
+                    },
+                });
             } finally {
                 setLoading(false); // Set loading to false after data is fetched
             }
@@ -115,6 +122,7 @@ const FeedbackList = ({ feedbacks }) => {
                     onChange={handleSearchChange}
                     style={inputStyle}
                 />
+                <label htmlFor="sortOption" style={{ marginRight: '10px' }}>Sort by:</label>
                 <select value={sortOption} onChange={handleSortChange} style={selectStyle}>
                     <option value="asc">Sort Ascending</option>
                     <option value="desc">Sort Descending</option>
@@ -134,7 +142,7 @@ const FeedbackList = ({ feedbacks }) => {
                                     <div>
                                         < strong>{item.channel}</strong> {/* Display the channel (e.g., Twitter) */}
                                         <p style={{ margin: '5px 0' }}>
-                                            {item.id} <span style={{ color: '#999' }}>{new Date(item.date).toLocaleString()}</span>
+                                            {item.id} <span style={{ color: '#555' }}>{new Date(item.date).toLocaleString()}</span>
                                         </p> {/* Display the formatted timestamp */}
                                         <p>{item.text}</p> {/* Comment */}
                                     </div>

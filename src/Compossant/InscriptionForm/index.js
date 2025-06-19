@@ -6,6 +6,7 @@ import Cookies from 'js-cookie';
 import GoogleLogin from '../GoogleAuth';
 import { useNavigate } from 'react-router-dom';
 import "./style.css";
+import * as Sentry from "@sentry/react";
 
 const InscriptionForm = () => {
     const [form, setForm] = useState({
@@ -17,6 +18,7 @@ const InscriptionForm = () => {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
     const navigate = useNavigate();
+    const currentPath = window.location.pathname;
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -32,8 +34,12 @@ const InscriptionForm = () => {
                 expires: 1
             });
         } catch (err) {
-            console.error(err);
-            throw new Error("Erreur lors de la récupération des données :", err);
+            Sentry.captureMessage("Erreur lors de la récupération des données", {
+                level: "error",
+                tags: {
+                    route: currentPath,
+                },
+            });
         } finally {
             setLoading(false);
         }
@@ -43,7 +49,12 @@ const InscriptionForm = () => {
         const { name, value } = e.target;
 
         if (!name) {
-            throw new Error("Name is required for handleChange");
+            Sentry.captureMessage("Name is required for handleChange", {
+                level: "error",
+                tags: {
+                    route: currentPath,
+                },
+            });
         }
 
         setForm((prevForm) => ({
@@ -91,6 +102,7 @@ const InscriptionForm = () => {
                 type="submit"
                 disabled={loading}
                 title="Inscription"
+                onClick={() => {}}
             />
             <p onClick={() => {navigate("/login")}}>Connexion</p>
             <p>ou</p>

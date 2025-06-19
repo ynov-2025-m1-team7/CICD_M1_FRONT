@@ -1,10 +1,17 @@
 import React from 'react';
 import "./style.css";
+import * as Sentry from "@sentry/react";
 
 const Input = ({ name, type, label, placeholder, value, onChange }) => {
+    const currentPath = window.location.pathname;
 
     if (!name || !type || !onChange) {
-        throw new Error("Name, type, and onChange are required props");
+        Sentry.captureMessage("Name, type, and onChange are required props", {
+            level: "error",
+            tags: {
+                route: currentPath,
+            },
+        });
     }
 
     return (

@@ -5,6 +5,7 @@ import FormButton from "../FormButton";
 import Cookies from 'js-cookie';
 import { useNavigate } from 'react-router-dom';
 import "./style.css";
+import * as Sentry from "@sentry/react";
 
 const LoginForm = () => {
     const [form, setForm] = useState({
@@ -14,6 +15,7 @@ const LoginForm = () => {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
     const navigate = useNavigate();
+    const currentPath = window.location.pathname;
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -29,9 +31,13 @@ const LoginForm = () => {
                 expires: 1
             });
         } catch (err) {
-            console.error(err);
-            setError('Identifiants incorrects.', err);
-            throw new Error(error);
+            setError("Identifiants incorrects");
+            Sentry.captureMessage("Identifiants incorrects", {
+                level: "error",
+                tags: {
+                    route: currentPath,
+                },
+            });
         } finally {
             setLoading(false);
         }
@@ -41,7 +47,12 @@ const LoginForm = () => {
         const { name, value } = e.target;
         
         if (!name) {
-            throw new Error("Name is required for handleChange");
+            Sentry.captureMessage("Name is required for handleChange", {
+                level: "error",
+                tags: {
+                    route: currentPath,
+                },
+            });
         }
 
         setForm((prevForm) => ({
@@ -76,6 +87,7 @@ const LoginForm = () => {
                 className="form-button"
                 disabled={loading}
                 title="Se connecter"
+                onClick={() => {}}
             />
 
             <p onClick={() => {navigate("/signin")}}>S'inscrire</p>

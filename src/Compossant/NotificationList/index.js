@@ -1,10 +1,18 @@
 import React from "react";
 import NotificationItem from "../NotificationItem";
 import "./style.css";
+import * as Sentry from "@sentry/react";
 
 const NotificationList = ({ notifications }) => {
+  const currentPath = window.location.pathname;
+  
   if (!notifications || !Array.isArray(notifications)) {
-    throw new Error("Notifications must be an array");
+    Sentry.captureMessage("Notifications must be an array", {
+      level: "error",
+      tags: {
+        route: currentPath,
+      },
+    });
   }
 
   return (

@@ -1,16 +1,20 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import { createRoot } from "react-dom/client";
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import SentryComponent from './config/sentry';
+import * as Sentry from "@sentry/react";
+import './config/sentry';
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+
+const container = document.getElementById("root");
+const root = createRoot(container);
+
 root.render(
-  <React.StrictMode>
-    <SentryComponent App={App} />
-    {/* <App /> */}
-  </React.StrictMode>
+  <Sentry.ErrorBoundary fallback={"Une erreur est survenue"}>
+    <App />
+  </Sentry.ErrorBoundary>
 );
 
 // If you want to start measuring performance in your app, pass a function
