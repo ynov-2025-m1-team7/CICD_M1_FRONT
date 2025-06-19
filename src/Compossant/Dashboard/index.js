@@ -6,18 +6,23 @@ import Cookies from "js-cookie";
 import axios from "axios";
 import "./style.css";
 import { useEffect, useState } from "react";
-
 import { SortByDate, SortByFeeling } from "../ApiData";
+import * as Sentry from "@sentry/react";
 
-// Fonction utilitaire pour décoder le JWT si non déjà définie ailleurs
+const currentPath = window.location.pathname;
+
 const parseJwt = (token) => {
     try {
         const base64Url = token.split('.')[1];
         const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
         return JSON.parse(atob(base64));
     } catch (e) {
-        console.error("Erreur de parsing du JWT :", e);
-        return null;
+        Sentry.captureMessage("Erreur de parsing du JWT", {
+            level: "error",
+            tags: {
+                route: currentPath,
+            },
+        });
     }
 };
 
@@ -52,7 +57,12 @@ const Dashboard = () => {
                 setAverageScore(response.data.average_score); // Score moyen
                 setCountByFeeling(dataByFeelings); // Données par sentiment
             } catch (error) {
-                console.error("Erreur lors de la récupération des données :", error);
+                Sentry.captureMessage("Erreur lors de la récupération des données", {
+                    level: "error",
+                    tags: {
+                        route: currentPath,
+                    },
+                });
             } finally {
                 setLoading(false);
             }

@@ -9,7 +9,6 @@
 .DashboardTitle {
     grid-column: 1 / -1;
     text-align: center;
-    align-items: center;
 }
 
 @media screen and (max-width: 680px) {

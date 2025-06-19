@@ -14,7 +14,7 @@
 }
 
 .disconect-button {
-    background-color: #EF4444;
+    background-color: #c62727;
     color: white;
 }
 
@@ -30,7 +30,7 @@
 }
 
 .disconect-button:hover {
-    background-color: #de2121;
+    background-color: #b70808;
     cursor: pointer;
     transition: all 0.5s ease-in-out;
 }

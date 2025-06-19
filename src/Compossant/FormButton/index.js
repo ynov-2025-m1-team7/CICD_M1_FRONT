@@ -1,6 +1,18 @@
 import "./style.css";
+import * as Sentry from "@sentry/react";
 
 const FormButton = ({ type, title, onClick, disabled=false }) => {
+    const currentPath = window.location.pathname;
+
+    if (!type || !title || !onClick) {
+        Sentry.captureMessage("Type, title, and onClick are required props", {
+            level: "error",
+            tags: {
+                route: currentPath,
+            },
+        });
+    }
+
     return (
         <button 
             type={type}

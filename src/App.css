@@ -1,4 +1,8 @@
-@import url('https://fonts.googleapis.com/css2?family=Agbalumo&display=swap');
+@font-face {
+    font-family: "Agbalumo";
+    src: url("Agbalumo-Regular.ttf") format("truetype");
+}
+
 h1, h2, h3, h4, h5, h6 {
     font-family: "Agbalumo", system-ui;
     font-weight: 400;

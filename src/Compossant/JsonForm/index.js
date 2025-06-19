@@ -3,6 +3,7 @@ import axios from 'axios';
 import Input from "../Input";
 import FormButton from "../FormButton";
 import { useNavigate } from 'react-router-dom';
+import * as Sentry from "@sentry/react";
 import "./style.css";
 
 const JsonForm = () => {
@@ -10,6 +11,7 @@ const JsonForm = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const navigate = useNavigate();
+  const currentPath = window.location.pathname;
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -23,24 +25,30 @@ const JsonForm = () => {
     }
   
     try {
-      const text = await form.file.text(); // Read file as text
-      const json = JSON.parse(text); // Parse to JSON
-  
+      const text = await form.file.text();
+      const json = JSON.parse(text);
+
       const response = await axios.post(
         `${process.env.REACT_APP_API_URL}/feedbacks/upload`,
         json,
         {
-          headers: {
-            'Content-Type': 'application/json',
-          },
+          headers: { 'Content-Type': 'application/json' },
         }
       );
-  
-      console.log(response.data);
-      // navigate("/success");
+
+      Sentry.captureMessage("Fichier JSON envoyé avec succès", "info");
+
     } catch (err) {
-      console.error(err);
+      Sentry.captureException(err);
       setError("Le fichier n'est pas un JSON valide ou l'envoi a échoué.");
+      setForm({ file: null });
+      navigate('/feedback');
+      Sentry.captureMessage("Erreur lors de la récupération des données", {
+          level: "error",
+          tags: {
+              route: currentPath,
+          },
+      });
     } finally {
       setLoading(false);
     }
@@ -60,6 +68,7 @@ const JsonForm = () => {
         type="file"
         name="file"
         accept=".json"
+        label={"Choisir un fichier JSON"}
         onChange={handleChange}
       />
       {error && <p className="error">{error}</p>}
@@ -68,6 +77,7 @@ const JsonForm = () => {
         className="form-button"
         disabled={loading}
         title={loading ? "Envoi..." : "Ajouter"}
+        onClick={handleSubmit}
       />
     </form>
   );

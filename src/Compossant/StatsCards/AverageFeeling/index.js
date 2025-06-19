@@ -1,12 +1,24 @@
 import "./style.css";
 import { useState, useEffect } from "react";
+import * as Sentry from "@sentry/react";
 
 const AvarageFeeling = ({value}) => {
+    const currentPath = window.location.pathname;
+    
     const [data, setData] = useState({
         icon :"/assets/Feedback/NeutralSmiley.svg",
         label : "Neutre"
     });
-    
+
+    if (!value) {
+        Sentry.captureMessage("La valeur moyenne du sentiment est requise", {
+            level: "error",
+            tags: {
+                route: currentPath,
+            },
+        });
+    }
+
     useEffect(() => {
         if (value < 0.4) {
             setData({
