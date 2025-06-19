@@ -7,3 +7,4 @@ Sentry.init({
   tracePropagationTargets: ["localhost", process.env.REACT_APP_API_URL],
   sendDefaultPii: true,
 });
+
